@@ -68,7 +68,7 @@ func (manager *ClientManager) receive(client *Client) {
 }
 
 func listenAndServe(addr string, metricChannel chan float64) error {
-	fmt.Println("Starting server...")
+	fmt.Printf("Starting sshd, binding on %s \n", addr)
 	listener, err := net.Listen("tcp", addr)
 	if err != nil {
 		return err

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -35,5 +36,6 @@ func (m MetricServer) ListenAndServe(addr string) {
 	h := promhttp.Handler()
 	http.Handle("/", h)
 	http.Handle("/metrics", h)
+	fmt.Printf("Starting httpd, binding on %s \n", addr)
 	http.ListenAndServe(addr, nil)
 }
